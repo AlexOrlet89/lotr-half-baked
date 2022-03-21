@@ -11,7 +11,6 @@ import Characters from './views/Characters/characters';
 
 function App() {
   const [films, setFilms] = useState([]);
-  const [books, setBooks] = useState([]);
   const [characters, setCharacters] = useState([]);
   const [race, setRace] = useState('All');
 
@@ -21,16 +20,6 @@ function App() {
       const data = await fetchFilms();
       setFilms(data);
       // console.log('film data', data);
-    };
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    //fetchFilms page-load
-    const fetchData = async () => {
-      const data = await fetchBooks();
-      setBooks(data);
-      // console.log('book data', data);
     };
     fetchData();
   }, []);
@@ -59,7 +48,7 @@ function App() {
         </Switch>
         <Switch>
           <Route exact path="/books">
-            <Books books={books} />
+            <Books />
           </Route>
         </Switch>
         <Switch>

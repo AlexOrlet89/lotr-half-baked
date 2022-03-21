@@ -4,7 +4,7 @@ export default function Characters({ characters, setRace }) {
 
   return (
     <>
-      Characters
+      <h4>Characters</h4>
       <select onChange={(e) => setRace(e.target.value)}>
         <option value="All">All</option>
         <option value="Dwarf">Dwarf</option>
