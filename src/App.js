@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import Main from './views/Main/Main';
 import { fetchFilms } from './services/films';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 
 function App() {
   const [films, setFilms] = useState([]);
@@ -19,7 +19,26 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Main />
+        <Switch>
+          <Route>
+            <Main />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route>
+            <Books />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route>
+            <Characters />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route>
+            <Films />
+          </Route>
+        </Switch>
       </div>
     </BrowserRouter>
   );
