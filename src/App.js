@@ -6,17 +6,19 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Films from './views/Films/films';
 import { fetchBooks } from './services/books';
 import Books from './views/Books/books';
+import { fetchCharacters } from './services/characters';
 
 function App() {
   const [films, setFilms] = useState([]);
   const [books, setBooks] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     //fetchFilms page-load
     const fetchData = async () => {
       const data = await fetchFilms();
       setFilms(data);
-      console.log('film data', data);
+      // console.log('film data', data);
     };
     fetchData();
   }, []);
@@ -26,13 +28,24 @@ function App() {
     const fetchData = async () => {
       const data = await fetchBooks();
       setBooks(data);
-      console.log('book data', data);
+      // console.log('book data', data);
     };
     fetchData();
   }, []);
 
-  console.log('films', films);
-  console.log('books', books);
+  useEffect(() => {
+    //fetchCharacters page-load
+    const fetchData = async () => {
+      const data = await fetchCharacters('All', '');
+      setCharacters(data);
+      console.log('character data', data);
+    };
+    fetchData();
+  }, []);
+
+  // console.log('films', films);
+  // console.log('books', books);
+  console.log('characters', characters);
 
   return (
     <BrowserRouter>
