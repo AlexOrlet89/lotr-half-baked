@@ -1,8 +1,9 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Main from './views/Main/Main';
 import { fetchFilms } from './services/films';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Films from './views/Films/films';
 
 function App() {
   const [films, setFilms] = useState([]);
@@ -12,31 +13,30 @@ function App() {
     const fetchData = async () => {
       const data = await fetchFilms();
       setFilms(data);
+      console.log('data', data);
     };
     fetchData();
   }, []);
+
+  console.log('films', films);
 
   return (
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route>
+          <Route exact path="/main">
             <Main />
           </Route>
         </Switch>
         <Switch>
-          <Route>
-            <Books />
-          </Route>
+          <Route>{/* <Books /> */}</Route>
         </Switch>
         <Switch>
-          <Route>
-            <Characters />
-          </Route>
+          <Route>{/* <Characters /> */}</Route>
         </Switch>
         <Switch>
-          <Route>
-            <Films />
+          <Route exact path="/films">
+            <Films movies={films} />
           </Route>
         </Switch>
       </div>
