@@ -1,4 +1,20 @@
-export default function Characters({ characters, setRace }) {
+import { useEffect, useState } from 'react';
+import { fetchCharacters } from '../../services/characters';
+
+export default function Characters() {
+  const [characters, setCharacters] = useState([]);
+  const [race, setRace] = useState('All');
+
+  useEffect(() => {
+    //fetchCharacters page-load
+    const fetchData = async () => {
+      const data = await fetchCharacters(`${race}`, '');
+      setCharacters(data);
+      console.log('character data', data);
+    };
+    fetchData();
+  }, [race]);
+
   console.log({ characters });
   console.log(characters);
 
