@@ -1,6 +1,6 @@
 import './App.css';
 import Main from './views/Main/Main';
-import { BrowserRouter, Switch, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Films from './views/Films/films';
 import Books from './views/Books/books';
 import Characters from './views/Characters/characters';
