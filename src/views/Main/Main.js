@@ -1,9 +1,10 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { fetchBooks } from '../../services/books';
-import { fetchFilms } from '../../services/films';
-import { fetchCharacters } from '../../services/characters';
 
 export default function Main() {
-  return <div>Main</div>;
+  return (
+    <div>
+      <h1>Da Lord.... uh Da Rings :)</h1>
+      <img style={{ height: '200px' }} src={`${process.env.PUBLIC_URL}/maxresdefault.jpg`} />
+    </div>
+  );
 }

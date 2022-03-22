@@ -4,23 +4,34 @@ import { fetchCharacters } from '../../services/characters';
 export default function Characters() {
   const [characters, setCharacters] = useState([]);
   const [race, setRace] = useState('All');
+  const [search, setSearch] = useState('');
+  const [change, setChange] = useState('');
 
   useEffect(() => {
     //fetchCharacters page-load
     const fetchData = async () => {
-      const data = await fetchCharacters(`${race}`, '');
+      const data = await fetchCharacters(`${race}`, `${search}`);
       setCharacters(data);
-      console.log('character data', data);
+      //   console.log('character data', data);
     };
     fetchData();
-  }, [race]);
-
-  console.log({ characters });
-  console.log(characters);
+  }, [race, search]);
 
   return (
     <>
-      <h4>Characters</h4>
+      <h1>Characters</h1>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setSearch(change);
+        }}
+      >
+        <label>
+          Name:
+          <input type="text" name="name" onChange={(e) => setChange(e.target.value)} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
       <select onChange={(e) => setRace(e.target.value)}>
         <option value="All">All</option>
         <option value="Dwarf">Dwarf</option>

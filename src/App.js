@@ -1,6 +1,6 @@
 import './App.css';
 import Main from './views/Main/Main';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link, NavLink } from 'react-router-dom';
 import Films from './views/Films/films';
 import Books from './views/Books/books';
 import Characters from './views/Characters/characters';
@@ -12,8 +12,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <div></div>
+        <NavLink to="/books">Books</NavLink>
+        <NavLink to="/characters">Characters</NavLink>
+        <NavLink to="/films">Films</NavLink>
+        <NavLink to="/">Main</NavLink>
         <Switch>
-          <Route exact path="/main">
+          <Route exact path="/">
             <Main />
           </Route>
         </Switch>

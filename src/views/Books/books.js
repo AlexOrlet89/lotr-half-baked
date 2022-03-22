@@ -14,12 +14,9 @@ export default function Books() {
     fetchData();
   }, []);
 
-  console.log({ books });
-  console.log(books);
-
   return (
     <div>
-      Books
+      <h1>Books</h1>
       <div>
         {books.map((book) => (
           <h4 key={book.title}>{book.title}</h4>
